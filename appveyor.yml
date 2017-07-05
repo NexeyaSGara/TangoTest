@@ -101,6 +101,17 @@ init:
   - del "C:\Program Files (x86)\MSBuild\12.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   #RDP from start
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  # OmniOrb
+  - cmd: cd "C:\projects\"
+  - cmd: md omniorb
+  - cmd: cd "C:\projects\"
+  - if %ARCH%==win32-msvc9 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/q4q7ai5h4sx0ey4n/artifacts/omniorb-4.2.1_%ARCH%.zip
+  - if %ARCH%==x64-msvc9 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/lx97jsanp9gcdewv/artifacts/omniorb-4.2.1_%ARCH%.zip
+  - if %ARCH%==win32-msvc10 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/rrmrblr2p3x62cp2/artifacts/omniorb-4.2.1_%ARCH%.zip
+  - if %ARCH%==x64-msvc10 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/negb5jiua4dloou4/artifacts/omniorb-4.2.1_%ARCH%.zip
+  - if %ARCH%==x64-msvc12 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/m0hlnoyx0ctdur86/artifacts/omniorb-4.2.1_%ARCH%.zip
+  - if %ARCH%==x64-msvc14 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/cfnmhdpyulhfdtg3/artifacts/omniorb-4.2.1_%ARCH%.zip
+  - cmd: 7z -y x omniorb-4.2.1_%ARCH%.zip -oC:\projects\omniorb\
   # Tango
   - cmd: cd "C:\projects\"
   - cmd: md tango
@@ -150,6 +161,7 @@ install:
   - cmd: cd "C:\projects\TangoTest"  
   - cmd: if %platform%==x64 set TANGO_PATH=C:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x64/
   - cmd: if %platform%==win32 set TANGO_PATH=C:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x86/
+  - cmd: set OMNI_PATH=C:/projects/omniorb/
   - cmd: if %ARCH%==x64-msvc14 set path=%path%;%PYTHONPATH%
   - cmd: cmake -G "%CMAKE_GENERATOR%"
   - cmd: cd c:/projects/debug_build
