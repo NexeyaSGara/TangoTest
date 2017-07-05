@@ -148,7 +148,7 @@ install:
   - cmd: set PYTHONPATH=%PYTHONPATH%
   # Tango Server
   - cmd: cd "C:\projects\TangoTest"
-  - cmd: set TANGO_PATH=C:/projects/TangoTest/
+  - cmd: set TANGO_PATH=C:/projects/tango/
   - cmd: if %ARCH%==x64-msvc14 set path=%path%;%PYTHONPATH%
   - cmd: cmake -G "%CMAKE_GENERATOR%"
   - cmd: cd c:/projects/debug_build
