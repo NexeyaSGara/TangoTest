@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.0.2)
 set(CMP0048 NEW)
-project(TangoTest LANGUAGES CXX
-        VERSION 1.0)
-IF NOT(WIN32)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        project(TangoTest_d LANGUAGES CXX
+                VERSION 1.0)
+else()
+        project(TangoTest LANGUAGES CXX
+                VERSION 1.0)
+endif()
+IF(NOT WIN32)
 include(FindPkgConfig)
 
 pkg_search_module(TANGO_PKG REQUIRED tango)
@@ -35,3 +41,4 @@ ELSE
   target_link_libraries(${PROJECT_NAME} PUBLIC ${TANGO_PKG_LIBRARIES})
 ENDIF()
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+include(CPack)
