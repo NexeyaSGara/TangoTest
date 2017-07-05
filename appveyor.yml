@@ -1,7 +1,7 @@
 version: 1.0.{build}
 branches:
   only:
-    - NexeyaSGara-CI
+    - NexeyaSGara-windows-ci
 
 image: Visual Studio 2015
 
