@@ -33,7 +33,7 @@ IF(WIN32)
   else()
     target_link_libraries(${PROJECT_NAME} PUBLIC tango)
   endif()
-ELSE
+ELSE()
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TANGO_PKG_INCLUDE_DIRS})
   target_compile_options(${PROJECT_NAME} PUBLIC -std=c++11)
   target_compile_definitions(${PROJECT_NAME} PUBLIC ${TANGO_PKG_CFLAGS_OTHER})
