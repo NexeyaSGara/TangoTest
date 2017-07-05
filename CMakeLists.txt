@@ -14,14 +14,14 @@ include(FindPkgConfig)
 pkg_search_module(TANGO_PKG REQUIRED tango)
 ENDIF()
 
-set(SOURCES
+set(${PROJECT_NAME} SOURCES
         ClassFactory.cpp
         TangoTest.cpp
         TangoTestClass.cpp
         TangoTestStateMachine.cpp
         main.cpp)
 
-set(HEADERS
+set(${PROJECT_NAME} HEADERS
         TangoTest.h
         TangoTestClass.h)
 
@@ -29,7 +29,7 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 IF(WIN32)
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-  set(INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
+  set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
   target_include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
   include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
   link_directories($ENV{TANGO_PATH}/lib)
