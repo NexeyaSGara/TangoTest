@@ -14,14 +14,14 @@ include(FindPkgConfig)
 pkg_search_module(TANGO_PKG REQUIRED tango)
 ENDIF()
 
-set(${PROJECT_NAME} SOURCES
+set(SOURCES
         ClassFactory.cpp
         TangoTest.cpp
         TangoTestClass.cpp
         TangoTestStateMachine.cpp
         main.cpp)
 
-set(${PROJECT_NAME} HEADERS
+set(HEADERS
         TangoTest.h
         TangoTestClass.h)
 
