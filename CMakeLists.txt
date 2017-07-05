@@ -25,6 +25,8 @@ set(HEADERS
         TangoTest.h
         TangoTestClass.h)
 
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
 IF(WIN32)
   link_directories($ENV{TANGO_PATH}/lib)
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} $ENV{TANGO_PATH}/include)
@@ -40,5 +42,4 @@ ELSE()
   link_directories(${TANGO_PKG_LIBRARY_DIRS})
   target_link_libraries(${PROJECT_NAME} PUBLIC ${TANGO_PKG_LIBRARIES})
 ENDIF()
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 include(CPack)
