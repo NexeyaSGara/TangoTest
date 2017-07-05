@@ -28,9 +28,11 @@ set(HEADERS
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 IF(WIN32)
-  link_directories($ENV{TANGO_PATH}/lib)
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   set(INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
+  target_include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
+  include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
+  link_directories($ENV{TANGO_PATH}/lib)
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC tangod)
   else()
