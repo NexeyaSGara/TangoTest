@@ -178,7 +178,7 @@ build_script:
   - cmake --build ./ --config Release
   - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - cmd: cd c:/projects/debug_build
-  - cmake --build ./ --config Debug
+  #- cmake --build ./ --config Debug
   ##- cmake --build ./ --target install  --config Debug
 
 
@@ -187,10 +187,10 @@ after_build:
   # Generating installer
   - cmd: cpack -G NSIS
   - cmd: cpack -G ZIP
-  - cmd: cd c:/projects/debug_build
+  #- cmd: cd c:/projects/debug_build
   # Generating installer
-  - cmd: cpack -G NSIS
-  - cmd: cpack -G ZIP
+  #- cmd: cpack -G NSIS
+ # - cmd: cpack -G ZIP
   #rename x64-msvc10
   #- cmd: if %ARCH%==x64-msvc10 move libtango_9.2.5_Windows7.1SDK_x64_debug.exe libtango_9.2.5_v100_x64_debug.exe
   #- cmd: if %ARCH%==x64-msvc10 move libtango_9.2.5_Windows7.1SDK_x64_debug.zip libtango_9.2.5_v100_x64_debug.zip
@@ -215,7 +215,7 @@ after_build:
 
 on_finish:
   #RDP for finish
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
   - path: ./*.exe
