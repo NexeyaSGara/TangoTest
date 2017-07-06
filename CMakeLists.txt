@@ -51,6 +51,7 @@ IF(WIN32)
   add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+add_definitions(-D_DEBUG)
 install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
@@ -109,5 +110,21 @@ ELSE()
   target_compile_definitions(${PROJECT_NAME} PUBLIC ${TANGO_PKG_CFLAGS_OTHER})
   link_directories(${TANGO_PKG_LIBRARY_DIRS})
   target_link_libraries(${PROJECT_NAME} PUBLIC ${TANGO_PKG_LIBRARIES})
+ENDIF()
+IF(WIN32)
+
+  set (CPACK_PACKAGE_VENDOR "www.tango-controls.org")
+  set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "Tango - Connecting Things Together")
+  set (CPACK_PACKAGE_VERSION "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
+  set (CPACK_PACKAGE_VERSION_MAJOR ${MAJOR_VERSION})
+  set (CPACK_PACKAGE_VERSION_MINOR ${MINOR_VERSION})
+  set (CPACK_PACKAGE_VERSION_PATCH ${PATCH_VERSION})
+  
+  set(CPACK_NSIS_HELP_LINK "http://www.tango-controls.org")
+  set(CPACK_NSIS_URL_INFO_ABOUT "http://www.tango-controls.org")
+  set(CPACK_NSIS_MODIFY_PATH ON)
+  set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+  set(CPACK_NSIS_MENU_LINKS
+      "http://tango-controls.readthedocs.io/en/latest/" "Tango Doc")
 ENDIF()
 include(CPack)
