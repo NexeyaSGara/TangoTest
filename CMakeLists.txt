@@ -46,9 +46,8 @@ set(HEADERS
         TangoTest.h
         TangoTestClass.h)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-
 IF(WIN32)
+  add_executable(${PROJECT_NAME}.exe ${SOURCES} ${HEADERS})
   set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
@@ -93,6 +92,7 @@ IF(WIN32)
   ENDIF()
   endif()
 ELSE()
+  add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TANGO_PKG_INCLUDE_DIRS})
   target_compile_options(${PROJECT_NAME} PUBLIC -std=c++11)
   target_compile_definitions(${PROJECT_NAME} PUBLIC ${TANGO_PKG_CFLAGS_OTHER})
