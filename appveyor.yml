@@ -122,7 +122,7 @@ init:
   - if %ARCH%==x64-msvc14 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/prtq4sjdbeuum15y/artifacts/libtango_9.2.5_v140_x64_debug.zip
   - cmd: if %platform%==x64 7z -y x libtango_9.2.5_%MSVCVERSION%_x64_debug.zip -oC:\projects\tango\
   - cmd: if %platform%==win32 7z -y x libtango_9.2.5_%MSVCVERSION%_x86_debug.zip -oC:\projects\tango\
-  - cmd: if %ARCH%=x64-msvc10 rename C:/projects/tango/libtango_9.2.5_Windows7.1SDK_x64_debug C:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x64_debug
+  - cmd: if %ARCH%==x64-msvc10 rename C:/projects/tango/libtango_9.2.5_Windows7.1SDK_x64_debug C:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x64_debug
   - cmd: if %platform%==x64 xcopy "C:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x64_debug" "c:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x64" /c /g /d /i /e /r /h /y
   - cmd: if %platform%==win32 xcopy "C:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x86_debug" "c:/projects/tango/libtango_9.2.5_%MSVCVERSION%_x86" /c /g /d /i /e /r /h /y
   #Pthread-Win32
