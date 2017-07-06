@@ -53,11 +53,8 @@ IF(WIN32)
   set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
   target_include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
   include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
-  set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include/include")
-  target_include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include/include")
-  include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include/include")
-  link_directories("$ENV{TANGO_PATH}/lib")
   link_directories("$ENV{TANGO_PATH}/bin")
+  link_directories("$ENV{TANGO_PATH}/lib")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
                                                 $ENV{TANGO_PATH}/bin/omniORB4_rtd.lib
