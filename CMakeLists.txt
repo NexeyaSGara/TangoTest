@@ -61,6 +61,7 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rt.lib
                                                 $ENV{TANGO_PATH}/bin/COS4_rt.lib)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-4_1_7.lib)
   ELSEIF(MSVC10)
