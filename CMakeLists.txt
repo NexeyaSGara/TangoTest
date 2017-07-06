@@ -44,7 +44,7 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/COS4_rtd.lib
-                                                $ENV{TANGO_PATH}/lib/msvcstubd.lib)
+                                                $ENV{TANGO_PATH}/bin/msvcstubd.lib)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_1_7.lib)
   ELSEIF(MSVC10)
@@ -61,7 +61,7 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rt.lib
                                                 $ENV{TANGO_PATH}/bin/COS4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/msvcstub.lib)
+                                                $ENV{TANGO_PATH}/bin/msvcstub.lib)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-4_1_7.lib)
   ELSEIF(MSVC10)
