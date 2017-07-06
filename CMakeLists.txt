@@ -84,11 +84,11 @@ endif()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v1400-mt-gd-4_1_7.lib)
   ENDIF()
   else()
-    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
-                                                $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
-                                                $ENV{TANGO_PATH}/bin/omnithread_rt.lib
-                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/tango.lib)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib
+                                                $ENV{TANGO_PATH}/bin/omniORB421_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omniDynamic421_rt.lib
+                                                $ENV{TANGO_PATH}/bin/COS421_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omnithread40_rt.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
