@@ -73,7 +73,8 @@ endif()
                                                 $ENV{TANGO_PATH}/bin/omniDynamic421_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/COS421_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread40_rtd.lib)
-    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32 pthreadVC2)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_1_7.lib)
   ELSEIF(MSVC10)
