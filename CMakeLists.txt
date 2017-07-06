@@ -19,7 +19,6 @@ add_definitions(-D_WIN32)
 add_definitions(-D__OSVERSION__=4)
 add_definitions(-D__POSIX_NT__)
 add_definitions(-D__x86__)
-add_definitions(-D_TG_WINDOWS_)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 add_definitions(-DOMNI_UNLOADABLE_STUBS)
 add_definitions(-D_TANGO_LIB)
@@ -66,6 +65,7 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/bin/omnithread_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/COS4_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32 pthreadVC2)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_1_7.lib)
   ELSEIF(MSVC10)
@@ -80,8 +80,9 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rt.lib
-                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib)
-    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
+                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib
+                                                $ENV{TANGO_PATH}/bin/msvcstub.lib)
+    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32 pthreadVC2)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-4_1_7.lib)
   ELSEIF(MSVC10)
