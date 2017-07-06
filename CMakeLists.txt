@@ -22,6 +22,7 @@ add_definitions(-D__x86__)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 add_definitions(-DOMNI_UNLOADABLE_STUBS)
 add_definitions(-D_TANGO_LIB)
+add_definitions(-DTANGO_HAS_DLL)
 add_definitions(-DHAVE_STRUCT_TIMESPEC)
 add_definitions(-D_TIMESPEC_DEFINED)
 add_definitions(-DSTRUCT_TIMESPEC_HAS_TV_SEC)
@@ -83,13 +84,13 @@ endif()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v1400-mt-gd-4_1_7.lib)
   ENDIF()
   else()
-    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib 
-                                                $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
+    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rt.lib
-                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib)
+                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib
+                                                $ENV{TANGO_PATH}/lib/tango.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
-    target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-4_1_7.lib)
   ELSEIF(MSVC10)
