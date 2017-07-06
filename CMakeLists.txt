@@ -61,7 +61,6 @@ IF(WIN32)
   link_directories("$ENV{TANGO_PATH}/bin")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
-                                                $ENV{TANGO_PATH}/lib/omniORB4d.lib
                                                 $ENV{TANGO_PATH}/bin/omniORB4_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rtd.lib
@@ -78,7 +77,6 @@ IF(WIN32)
   ENDIF()
   else()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib 
-                                                $ENV{TANGO_PATH}/lib/omniORB4.lib
                                                 $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rt.lib
