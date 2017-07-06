@@ -45,6 +45,15 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/lib/omnithread_rtd.lib
                                                 $ENV{TANGO_PATH}/lib/COS4_rtd.lib
                                                 $ENV{TANGO_PATH}/lib/msvcstubd.lib)
+  IF(MSVC90)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_1_7.lib)
+  ELSIF(MSVC10)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v100-mt-gd-4_1_7.lib)
+  ELSIF(MSVC12)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v120-mt-gd-4_1_7.lib)
+  ELSIF(MSVC14)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v1400-mt-gd-4_1_7.lib)
+  ENDIF()
   else()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib 
                                                 $ENV{TANGO_PATH}/bin/omniORB4.lib
@@ -53,6 +62,15 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/bin/omnithread_rt.lib
                                                 $ENV{TANGO_PATH}/bin/COS4_rt.lib
                                                 $ENV{TANGO_PATH}/lib/msvcstub.lib)
+  IF(MSVC90)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-4_1_7.lib)
+  ELSIF(MSVC10)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v100-mt-4_1_7.lib)
+  ELSIF(MSVC12)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v120-mt-4_1_7.lib)
+  ELSIF(MSVC14)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v1400-mt-4_1_7.lib)
+  ENDIF()
   endif()
 ELSE()
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TANGO_PKG_INCLUDE_DIRS})
