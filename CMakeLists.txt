@@ -50,19 +50,6 @@ set(HEADERS
         TangoTestClass.h)
 
 IF(WIN32)
-  add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-  
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-add_definitions(-D_DEBUG)
-install(TARGETS ${PROJECT_NAME}
-        ARCHIVE DESTINATION lib
-        RUNTIME DESTINATION bin
-        CONFIGURATIONS Debug)
-else()
-install(TARGETS ${PROJECT_NAME}
-        ARCHIVE DESTINATION lib
-        RUNTIME DESTINATION bin)
-endif()
   set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
@@ -105,6 +92,20 @@ endif()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v1400-mt-4_1_7.lib)
   ENDIF()
   endif()
+  
+  add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+  
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+add_definitions(-D_DEBUG)
+install(TARGETS ${PROJECT_NAME}
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        CONFIGURATIONS Debug)
+else()
+install(TARGETS ${PROJECT_NAME}
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin)
+endif()
 ELSE()
   add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TANGO_PKG_INCLUDE_DIRS})
