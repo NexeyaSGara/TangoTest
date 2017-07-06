@@ -42,15 +42,13 @@ IF(WIN32)
                                                 $ENV{TANGO_PATH}/lib/omniORB4_rtd.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4_rtd.lib
                                                 $ENV{TANGO_PATH}/lib/omnithread_rtd.lib
-                                                $ENV{TANGO_PATH}/lib/COS4_rtd.lib
-                                                $ENV{TANGO_PATH}/lib/msvcstubd.lib)
+                                                $ENV{TANGO_PATH}/lib/COS4_rtd.lib)
   else()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib 
-                                                $ENV{TANGO_PATH}/lib/omniORB4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/omniDynamic4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/omnithread_rt.lib
-                                                $ENV{TANGO_PATH}/lib/COS4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/msvcstub.lib)
+                                                $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omnithread_rt.lib
+                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib)
   endif()
 ELSE()
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${TANGO_PKG_INCLUDE_DIRS})
