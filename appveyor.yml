@@ -120,7 +120,8 @@ init:
   - if %ARCH%==x64-msvc10 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/bjjq68huchxhk3sj/artifacts/libtango_9.2.5_v100_x64_debug.zip
   - if %ARCH%==x64-msvc12 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/g8s83n8brip803wg/artifacts/libtango_9.2.5_v120_x64_debug.zip
   - if %ARCH%==x64-msvc14 appveyor DownloadFile https://ci.appveyor.com/api/buildjobs/qn4c3dk14y53j7oy/artifacts/libtango_9.2.5_v140_x64_debug.zip
-  
+  - cmd: if %platform%==x64 7z -y x libtango_9.2.5_%MSVCVERSION%_x64_debug.zip -oC:\projects\tango\
+  - cmd: if %platform%==win32 7z -y x libtango_9.2.5_%MSVCVERSION%_x86_debug.zip -oC:\projects\tango\
   #Pthread-Win32
   - cmd: cd "C:\projects\"
   - cmd: md pthreads-win32
