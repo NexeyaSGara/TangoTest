@@ -38,8 +38,8 @@ IF(WIN32)
   link_directories("$ENV{TANGO_PATH}/lib")
   link_directories("$ENV{TANGO_PATH}/bin")
   target_link_libraries(${PROJECT_NAME}
-  Debug ("$ENV{TANGO_PATH}/lib/tangod.lib
-  Release ("$ENV{TANGO_PATH}/lib/tango/lib)
+  Debug "$ENV{TANGO_PATH}/lib/tangod.lib
+  Release "$ENV{TANGO_PATH}/lib/tango/lib)
   #if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     #target_link_libraries(${PROJECT_NAME} PUBLIC tangod)
   #else()
