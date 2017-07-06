@@ -69,10 +69,10 @@ endif()
   link_directories("$ENV{TANGO_PATH}/lib")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
-                                                $ENV{TANGO_PATH}/bin/omniORB4_rtd.lib
-                                                $ENV{TANGO_PATH}/bin/omniDynamic4_rtd.lib
-                                                $ENV{TANGO_PATH}/bin/omnithread_rtd.lib
-                                                $ENV{TANGO_PATH}/bin/COS4_rtd.lib)
+                                                $ENV{TANGO_PATH}/bin/omniORB421_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/omniDynamic421_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/COS421_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/omnithread40_rtd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32 pthreadVC2)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_1_7.lib)
