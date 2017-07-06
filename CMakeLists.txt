@@ -49,6 +49,7 @@ set(HEADERS
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 IF(WIN32)
+  set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
   target_include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
