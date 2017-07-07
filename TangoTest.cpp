@@ -3240,7 +3240,7 @@ Tango::DevString TangoTest::dev_string(Tango::DevString argin)
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevString" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_string");
