@@ -27,7 +27,6 @@ add_definitions(-D__x86__)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 add_definitions(-DOMNI_UNLOADABLE_STUBS)
 add_definitions(-DTANGO_HAS_DLL)
-add_definitions(-DLOG4TANGO_HAS_DLL)
 add_definitions(-DHAVE_STRUCT_TIMESPEC)
 add_definitions(-D_TIMESPEC_DEFINED)
 add_definitions(-D_MSVC_VER)
@@ -82,7 +81,8 @@ endif()
                                                 $ENV{TANGO_PATH}/bin/omniORB421_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic421_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/COS421_rtd.lib
-                                                $ENV{TANGO_PATH}/bin/omnithread40_rtd.lib)
+                                                $ENV{TANGO_PATH}/bin/omnithread40_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
@@ -99,7 +99,8 @@ endif()
                                                 $ENV{TANGO_PATH}/bin/omniORB421_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic421_rt.lib
                                                 $ENV{TANGO_PATH}/bin/COS421_rt.lib
-                                                $ENV{TANGO_PATH}/bin/omnithread40_rt.lib)
+                                                $ENV{TANGO_PATH}/bin/omnithread40_rt.lib
+                                                $ENV{TANGO_PATH}/bin/msvcstub.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
