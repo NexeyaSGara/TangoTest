@@ -155,15 +155,19 @@ install:
   - cmd: if %ARCH%==win32-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc10 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 
-  - cmd: if %ARCH%==win32-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
+  - cmd: if %ARCH%==x64-msvc12 call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x64
   - cmd: if %ARCH%==x64-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
   - cmd: echo "Generator='%CMAKE_GENERATOR%'"
   - cmd: echo "Platform='%Platform%'"
   - cmd: set PYTHONPATH=%PYTHONPATH%
   # Tango Server
-  - cmd: cd "C:\projects\TangoTest"  
-  - cmd: if %platform%==x64 set TANGO_PATH='C:/projects/libtango/libtango_9.2.5_%MSVCVERSION%_x64/'
-  - cmd: if %platform%==win32 set TANGO_PATH='C:/projects/libtango/libtango_9.2.5_%MSVCVERSION%_x86/'
+  - cmd: cd "C:\projects\TangoTest"
+  - cmd: if %ARCH%==win32-msvc9 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_v90_x86/
+  - cmd: if %ARCH%==x64-msvc9 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_v90_x64/
+  - cmd: if %ARCH%==win32-msvc10 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_v100_x86/
+  - cmd: if %ARCH%==x64-msvc10 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_v100_x64/
+  - cmd: if %ARCH%==x64-msvc12 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_v120_x64/
+  - cmd: if %ARCH%==x64-msvc14 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_v140_x64/
   - cmd: cmake -G "%CMAKE_GENERATOR%" -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE 
   - cmd: cd c:/projects/debug_build
   - cmd: cmake -G "%CMAKE_GENERATOR%" -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DCMAKE_BUILD_TYPE=Debug
