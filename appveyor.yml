@@ -162,8 +162,8 @@ install:
   - cmd: set PYTHONPATH=%PYTHONPATH%
   # Tango Server
   - cmd: cd "C:\projects\TangoTest"  
-  - cmd: if %platform%==x64 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_%MSVCVERSION%_x64/
-  - cmd: if %platform%==win32 set TANGO_PATH=C:/projects/libtango/libtango_9.2.5_%MSVCVERSION%_x86/
+  - cmd: if %platform%==x64 set TANGO_PATH="C:/projects/libtango/libtango_9.2.5_%MSVCVERSION%_x64/"
+  - cmd: if %platform%==win32 set TANGO_PATH="C:/projects/libtango/libtango_9.2.5_%MSVCVERSION%_x86/"
   - cmd: cmake -G "%CMAKE_GENERATOR%" -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE 
   - cmd: cd c:/projects/debug_build
   - cmd: cmake -G "%CMAKE_GENERATOR%" -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DCMAKE_BUILD_TYPE=Debug
