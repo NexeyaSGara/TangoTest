@@ -3338,7 +3338,7 @@ Tango::DevVarCharArray *TangoTest::dev_var_char_array(const Tango::DevVarCharArr
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarCharArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_char_array");
@@ -3378,7 +3378,7 @@ Tango::DevVarDoubleArray *TangoTest::dev_var_double_array(const Tango::DevVarDou
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarDoubleArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_double_array");
@@ -3418,7 +3418,7 @@ Tango::DevVarDoubleStringArray *TangoTest::dev_var_double_string_array(const Tan
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarDoubleStringArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_double_string_array");
@@ -3459,7 +3459,7 @@ Tango::DevVarFloatArray *TangoTest::dev_var_float_array(const Tango::DevVarFloat
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarFloatArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_float_array");
@@ -3500,7 +3500,7 @@ Tango::DevVarLong64Array *TangoTest::dev_var_long64_array(const Tango::DevVarLon
   {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarLong64Array" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
                                    o.str(),
                                    (const char *)"TangoTest::dev_var_long64_array");
@@ -3539,7 +3539,7 @@ Tango::DevVarLongArray *TangoTest::dev_var_long_array(const Tango::DevVarLongArr
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarLongArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_long_array");
@@ -3579,7 +3579,7 @@ Tango::DevVarLongStringArray *TangoTest::dev_var_long_string_array(const Tango::
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarLongStringArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_long_string_array");
@@ -3620,7 +3620,7 @@ Tango::DevVarShortArray *TangoTest::dev_var_short_array(const Tango::DevVarShort
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarShortArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_short_array");
@@ -3660,7 +3660,7 @@ Tango::DevVarStringArray *TangoTest::dev_var_string_array(const Tango::DevVarStr
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarStringArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_string_array");
@@ -3701,7 +3701,7 @@ Tango::DevVarULong64Array *TangoTest::dev_var_ulong64_array(const Tango::DevVarU
   {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarULong64Array" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
                                    o.str(),
                                    (const char *)"TangoTest::dev_var_ulong64_array");
@@ -3740,7 +3740,7 @@ Tango::DevVarULongArray *TangoTest::dev_var_ulong_array(const Tango::DevVarULong
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarULongArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_ulong_array");
@@ -3780,7 +3780,7 @@ Tango::DevVarUShortArray *TangoTest::dev_var_ushort_array(const Tango::DevVarUSh
   if (argout == 0) {
     TangoSys_OMemStream o;
     o << "Failed to allocate Tango::DevVarUShortArray" << ends;
-    LOG_ERROR((o.str()));
+    //LOG_ERROR((o.str()));
     Tango::Except::throw_exception((const char *)"Out of memory error",
 						                       o.str(),
 						                       (const char *)"TangoTest::dev_var_ushort_array");
