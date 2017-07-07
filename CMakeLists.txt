@@ -74,6 +74,7 @@ install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin)
 endif()
+  target_compile_definitions(${PROJECT_NAME} PRIVATE OMNI_UNLOADABLE_STUBS)
   set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
