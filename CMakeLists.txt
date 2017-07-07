@@ -9,9 +9,11 @@ else()
                 VERSION 1.0)
 endif()
 #need to define the version of the library
-set(MAJOR_VERSION "1")
-set(MINOR_VERSION "0")
-set(PATCH_VERSION "0")
+set(MAJOR_VERSION "9")
+set(MINOR_VERSION "2")
+set(PATCH_VERSION "5")
+#convenient versions
+set(LIBRARY_VERSION "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
 IF(NOT WIN32)
 include(FindPkgConfig)
 
@@ -70,6 +72,7 @@ install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
         CONFIGURATIONS Debug)
+install(FILES Debug/${PROJECT_NAME}.exe DESTINATION bin)
 else()
 install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
