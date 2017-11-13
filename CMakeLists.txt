@@ -82,10 +82,10 @@ endif()
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
-                                                $ENV{TANGO_PATH}/bin/omniORB4d.lib
-                                                $ENV{TANGO_PATH}/bin/omniDynamic4d.lib
-                                                $ENV{TANGO_PATH}/bin/COS4d.lib
-                                                $ENV{TANGO_PATH}/bin/omnithreadd.lib
+                                                $ENV{TANGO_PATH}/lib/omniORB4d.lib
+                                                $ENV{TANGO_PATH}/lib/omniDynamic4d.lib
+                                                $ENV{TANGO_PATH}/lib/COS4d.lib
+                                                $ENV{TANGO_PATH}/lib/omnithreadd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
@@ -100,10 +100,10 @@ endif()
   ENDIF()
   else()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib
-                                                $ENV{TANGO_PATH}/bin/omniORB4.lib
-                                                $ENV{TANGO_PATH}/bin/omniDynamic4.lib
-                                                $ENV{TANGO_PATH}/bin/COS4.lib
-                                                $ENV{TANGO_PATH}/bin/omnithread.lib
+                                                $ENV{TANGO_PATH}/lib/omniORB4.lib
+                                                $ENV{TANGO_PATH}/lib/omniDynamic4.lib
+                                                $ENV{TANGO_PATH}/lib/COS4.lib
+                                                $ENV{TANGO_PATH}/lib/omnithread.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstub.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
