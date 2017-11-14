@@ -23,7 +23,6 @@ ENDIF()
 IF (WIN32)
 add_definitions(-D_WIN32)
 add_definitions(-DWIN32)
-add_definitions(-DWINSTATIC)
 add_definitions(-D_CONSOLE)
 IF(CMAKE_CL_64)
 add_definitions(-D_64BITS)
@@ -59,6 +58,7 @@ IF(WIN32)
   message("$ENV{TANGO_PATH}/include")
   
   add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+  add_executable(${PROJECT_NAME}_dyn ${SOURCES} ${HEADERS})
   
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 add_definitions(-D_DEBUG)
@@ -66,15 +66,25 @@ install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
         CONFIGURATIONS Debug)
-install(FILES Debug/${PROJECT_NAME}.exe DESTINATION bin)
+install(FILES Debug/${PROJECT_NAME}_d.exe DESTINATION bin)
+install(TARGETS ${PROJECT_NAME}_dyn
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        CONFIGURATIONS Debug)
+install(FILES Debug/${PROJECT_NAME}_d_dyn.exe DESTINATION bin)
 else()
 add_definitions(-DNDEBUG)
 install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin)
+install(TARGETS ${PROJECT_NAME}_dyn
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin)
 endif()
   set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+  set_property(TARGET ${PROJECT_NAME} PROPERTY COMPILE_DEFINITIONS "_WINSTATIC;")
+  set_property(TARGET ${PROJECT_NAME}_dyn PROPERTY COMPILE_DEFINITIONS "LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtangod.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4d.lib
@@ -82,16 +92,26 @@ endif()
                                                 $ENV{TANGO_PATH}/lib/COS4d.lib
                                                 $ENV{TANGO_PATH}/lib/omnithreadd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
+                                                $ENV{TANGO_PATH}/lib/omniORB4_rtd.lib
+                                                $ENV{TANGO_PATH}/lib/omniDynamic4_rtd.lib
+                                                $ENV{TANGO_PATH}/lib/COS4_rtd.lib
+                                                $ENV{TANGO_PATH}/lib/omnithread_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-s-gd-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_0_5.lib)
   ELSEIF(MSVC10)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v100-mt-s-gd-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v100-mt-gd-4_0_5.lib)
   ELSEIF(MSVC12)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v120-mt-s-gd-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v120-mt-gd-4_0_5.lib)
   ELSEIF(MSVC14)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v140-mt-s-gd-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v140-mt-gd-4_0_5.lib)
   ENDIF()
   else()
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtango.lib
@@ -100,16 +120,26 @@ endif()
                                                 $ENV{TANGO_PATH}/lib/COS4.lib
                                                 $ENV{TANGO_PATH}/lib/omnithread.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstub.lib)
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib
+                                                $ENV{TANGO_PATH}/lib/omniORB4_rt.lib
+                                                $ENV{TANGO_PATH}/lib/omniDynamic4_rt.lib
+                                                $ENV{TANGO_PATH}/lib/COS4_rt.lib
+                                                $ENV{TANGO_PATH}/lib/omnithread_rt.lib
+                                                $ENV{TANGO_PATH}/bin/msvcstub.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-s-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-4_0_5.lib)
   ELSEIF(MSVC10)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v100-mt-s-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v100-mt-4_0_5.lib)
   ELSEIF(MSVC12)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v120-mt-s-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v120-mt-4_0_5.lib)
   ELSEIF(MSVC14)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v140-mt-s-4_0_5.lib)
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v140-mt-4_0_5.lib)
   ENDIF()
   endif()
   
