@@ -51,6 +51,7 @@ set(HEADERS
 IF(WIN32)
 
   set(${PROJECT_NAME} INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
+  set(${PROJECT_NAME}_dyn INCLUDE_DIRS "$ENV{TANGO_PATH}/include")
   #target_include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
   include_directories(${PROJECT_NAME} PUBLIC "$ENV{TANGO_PATH}/include")
   link_directories("$ENV{TANGO_PATH}/bin")
