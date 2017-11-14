@@ -120,7 +120,7 @@ endif()
                                                 $ENV{TANGO_PATH}/lib/COS4.lib
                                                 $ENV{TANGO_PATH}/lib/omnithread.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstub.lib)
-    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib
+    target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/tango.lib
                                                 $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
                                                 $ENV{TANGO_PATH}/bin/COS4_rt.lib
