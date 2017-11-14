@@ -97,7 +97,7 @@ endif()
     target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
                                                 $ENV{TANGO_PATH}/bin/omniORB4_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omniDynamic4_rtd.lib
-                                                $ENV{TANGO_PATH}/lib/COS4_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/COS4_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/omnithread_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
