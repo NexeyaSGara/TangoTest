@@ -93,10 +93,10 @@ endif()
                                                 $ENV{TANGO_PATH}/lib/omnithreadd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
-                                                $ENV{TANGO_PATH}/lib/omniORB4_rtd.lib
-                                                $ENV{TANGO_PATH}/lib/omniDynamic4_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/omniORB4_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/omniDynamic4_rtd.lib
                                                 $ENV{TANGO_PATH}/lib/COS4_rtd.lib
-                                                $ENV{TANGO_PATH}/lib/omnithread_rtd.lib
+                                                $ENV{TANGO_PATH}/bin/omnithread_rtd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
@@ -121,10 +121,10 @@ endif()
                                                 $ENV{TANGO_PATH}/lib/omnithread.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstub.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tango.lib
-                                                $ENV{TANGO_PATH}/lib/omniORB4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/omniDynamic4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/COS4_rt.lib
-                                                $ENV{TANGO_PATH}/lib/omnithread_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omniORB4_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omniDynamic4_rt.lib
+                                                $ENV{TANGO_PATH}/bin/COS4_rt.lib
+                                                $ENV{TANGO_PATH}/bin/omnithread_rt.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstub.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
