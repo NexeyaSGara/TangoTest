@@ -76,14 +76,14 @@ endif()
   set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/tangod.lib
+    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtangod.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4d.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4d.lib
                                                 $ENV{TANGO_PATH}/lib/COS4d.lib
                                                 $ENV{TANGO_PATH}/lib/omnithreadd.lib
                                                 $ENV{TANGO_PATH}/bin/msvcstubd.lib)
     target_link_libraries(${PROJECT_NAME} PUBLIC ws2_32 mswsock advapi32 comctl32 odbc32)
-    target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
+    #target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/pthreadVC2.lib)
   IF(MSVC90)
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v90-mt-gd-4_0_5.lib)
   ELSEIF(MSVC10)
