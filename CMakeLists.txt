@@ -67,12 +67,12 @@ install(TARGETS ${PROJECT_NAME}
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
         CONFIGURATIONS Debug)
-install(FILES Debug/${PROJECT_NAME}_d.exe DESTINATION bin)
+#install(FILES Debug/${PROJECT_NAME}_d.exe DESTINATION bin)
 install(TARGETS ${PROJECT_NAME}_dyn
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
         CONFIGURATIONS Debug)
-install(FILES Debug/${PROJECT_NAME}_d_dyn.exe DESTINATION bin)
+#install(FILES Debug/${PROJECT_NAME}_d_dyn.exe DESTINATION bin)
 else()
 add_definitions(-DNDEBUG)
 install(TARGETS ${PROJECT_NAME}
