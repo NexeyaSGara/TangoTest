@@ -195,33 +195,33 @@ after_build:
   - cmd: cpack -G ZIP
   - cmd: cd c:/projects/debug_build
   # Generating installer
-  - cmd: cpack -G NSIS
-  - cmd: cpack -G ZIP
+  #- cmd: cpack -G NSIS
+  #- cmd: cpack -G ZIP
   #rename x64-msvc10
-  - cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_Windows7.1SDK_x64_debug.exe TangoTest_9.2.6_v100_x64_debug.exe
-  - cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_Windows7.1SDK_x64_debug.zip TangoTest_9.2.6_v100_x64_debug.zip
+  #- cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_Windows7.1SDK_x64_debug.exe TangoTest_9.2.6_v100_x64_debug.exe
+  #- cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_Windows7.1SDK_x64_debug.zip TangoTest_9.2.6_v100_x64_debug.zip
   - cmd: cd C:/projects/TangoTest 
   - cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_Windows7.1SDK_x64.exe TangoTest_9.2.6_v100_x64.exe
   - cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_Windows7.1SDK_x64.zip TangoTest_9.2.6_v100_x64.zip
   # copying debug versions for upload
-  - cmd: cd c:/projects/debug_build
-  - cmd: if %ARCH%==win32-msvc9 move TangoTest_9.2.6_v90_x86_debug.exe C:/projects/TangoTest
-  - cmd: if %ARCH%==win32-msvc9 move TangoTest_9.2.6_v90_x86_debug.zip C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc9 move TangoTest_9.2.6_v90_x64_debug.exe C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc9 move TangoTest_9.2.6_v90_x64_debug.zip C:/projects/TangoTest
-  - cmd: if %ARCH%==win32-msvc10 move TangoTest_9.2.6_v100_x86_debug.exe C:/projects/TangoTest
-  - cmd: if %ARCH%==win32-msvc10 move TangoTest_9.2.6_v100_x86_debug.zip C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_v100_x64_debug.exe C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_v100_x64_debug.zip C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc12 move TangoTest_9.2.6_v120_x64_debug.exe C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc12 move TangoTest_9.2.6_v120_x64_debug.zip C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc14 move TangoTest_9.2.6_v140_x64_debug.exe C:/projects/TangoTest
-  - cmd: if %ARCH%==x64-msvc14 move TangoTest_9.2.6_v140_x64_debug.zip C:/projects/TangoTest
+  #- cmd: cd c:/projects/debug_build
+  #- cmd: if %ARCH%==win32-msvc9 move TangoTest_9.2.6_v90_x86_debug.exe C:/projects/TangoTest
+  #- cmd: if %ARCH%==win32-msvc9 move TangoTest_9.2.6_v90_x86_debug.zip C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc9 move TangoTest_9.2.6_v90_x64_debug.exe C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc9 move TangoTest_9.2.6_v90_x64_debug.zip C:/projects/TangoTest
+  #- cmd: if %ARCH%==win32-msvc10 move TangoTest_9.2.6_v100_x86_debug.exe C:/projects/TangoTest
+  #- cmd: if %ARCH%==win32-msvc10 move TangoTest_9.2.6_v100_x86_debug.zip C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_v100_x64_debug.exe C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc10 move TangoTest_9.2.6_v100_x64_debug.zip C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc12 move TangoTest_9.2.6_v120_x64_debug.exe C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc12 move TangoTest_9.2.6_v120_x64_debug.zip C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc14 move TangoTest_9.2.6_v140_x64_debug.exe C:/projects/TangoTest
+  #- cmd: if %ARCH%==x64-msvc14 move TangoTest_9.2.6_v140_x64_debug.zip C:/projects/TangoTest
 
 
 on_finish:
   #RDP for finish
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
   - path: ./*.exe
