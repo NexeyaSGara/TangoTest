@@ -90,6 +90,8 @@ endif()
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMTD")
     set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMTD")
+    set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIB:MSVCPRTD")
+    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIB:MSVCPRTD")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtangod.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4d.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4d.lib
@@ -122,6 +124,8 @@ endif()
   else()
     set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMT")
     set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMT")
+    set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIB:MSVCPRT")
+    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIB:MSVCPRT")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtango.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4.lib
