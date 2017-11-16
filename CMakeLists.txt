@@ -88,7 +88,7 @@ endif()
   set_property(TARGET ${PROJECT_NAME}_dyn PROPERTY COMPILE_DEFINITIONS "LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMTD /NODEFAULTLIB:MSVCPRTD /force:multiple ")
-    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMTD /NODEFAULTLIB:MSVCPRTD /force:multiple ")
+    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/force:multiple ")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtangod.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4d.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4d.lib
@@ -120,7 +120,7 @@ endif()
   ENDIF()
   else()
     set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMT /NODEFAULTLIB:MSVCPRT /force:multiple ")
-    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIB:LIBCMT /NODEFAULTLIB:MSVCPRT /force:multiple ")
+    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/force:multiple ")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtango.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4.lib
