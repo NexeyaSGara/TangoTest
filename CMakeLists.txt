@@ -86,10 +86,10 @@ endif()
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   target_include_directories(${PROJECT_NAME}_dyn PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   set_property(TARGET ${PROJECT_NAME} PROPERTY COMPILE_DEFINITIONS "_WINSTATIC;")
-  set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /NODEFAULTLIBS:LIBCMT")
-  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /NODEFAULTLIBS:LIBCMT")
   set_property(TARGET ${PROJECT_NAME}_dyn PROPERTY COMPILE_DEFINITIONS "LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIBS:LIBCMTD")
+    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIBS:LIBCMTD")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtangod.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4d.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4d.lib
@@ -120,6 +120,8 @@ endif()
     target_link_libraries(${PROJECT_NAME}_dyn PUBLIC $ENV{TANGO_PATH}/lib/libzmq-v140-mt-gd-4_1_7.lib)
   ENDIF()
   else()
+    set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/NODEFAULTLIBS:LIBCMT")
+    set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/NODEFAULTLIBS:LIBCMT")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtango.lib
                                                 $ENV{TANGO_PATH}/lib/omniORB4.lib
                                                 $ENV{TANGO_PATH}/lib/omniDynamic4.lib
