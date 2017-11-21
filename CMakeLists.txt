@@ -58,8 +58,9 @@ IF(WIN32)
   link_directories("$ENV{TANGO_PATH}/lib")
   message("$ENV{TANGO_PATH}/include")
   
-  add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   add_executable(${PROJECT_NAME}_dyn ${SOURCES} ${HEADERS})
+  add_definitions(-DMT)
+  add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 add_definitions(-D_DEBUG)
