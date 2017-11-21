@@ -85,9 +85,9 @@ install(TARGETS ${PROJECT_NAME}_dyn
 endif()
   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   target_include_directories(${PROJECT_NAME}_dyn PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-  set_property(TARGET ${PROJECT_NAME} PROPERTY COMPILE_DEFINITIONS "_WINSTATIC;MT;")
+  set_property(TARGET ${PROJECT_NAME} PROPERTY COMPILE_DEFINITIONS "_WINSTATIC;")
   set_property(TARGET ${PROJECT_NAME}_dyn PROPERTY COMPILE_DEFINITIONS "LOG4TANGO_HAS_DLL;TANGO_HAS_DLL;")
-  set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple")
+  set_property(TARGET  ${PROJECT_NAME} PROPERTY LINK_FLAGS "/force:multiple /MT")
   set_property(TARGET  ${PROJECT_NAME}_dyn PROPERTY LINK_FLAGS "/force:multiple")
   if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_link_libraries(${PROJECT_NAME} PUBLIC $ENV{TANGO_PATH}/lib/libtangod.lib
