@@ -218,6 +218,9 @@ after_build:
   #- cmd: if %ARCH%==x64-msvc14 move TangoTest_9.2.6_v140_x64_debug.exe C:/projects/TangoTest
   #- cmd: if %ARCH%==x64-msvc14 move TangoTest_9.2.6_v140_x64_debug.zip C:/projects/TangoTest
 
+on_failure:
+  #RDP for failure
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 on_finish:
   #RDP for finish
