@@ -65,6 +65,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 else()
   add_compile_options(/MT)
 endif()
+
   add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
