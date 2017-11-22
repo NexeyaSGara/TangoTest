@@ -59,7 +59,12 @@ IF(WIN32)
   message("$ENV{TANGO_PATH}/include")
   
   add_executable(${PROJECT_NAME}_dyn ${SOURCES} ${HEADERS})
+  
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+  add_compile_options(/MTd)
+else()
   add_compile_options(/MT)
+endif()
   add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
   
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
